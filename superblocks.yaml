@@ -17,5 +17,5 @@ jobs:
 stages:
   - pipeline:
       jobs:
-        - compile
+        # - compile
         - deploy_to_rinkeby_manually
