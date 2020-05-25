@@ -23,6 +23,6 @@
     "opensea-js": "latest",
     "openzeppelin-solidity": "2.1.3",
     "truffle": "latest",
-    "truffle-flattener": "latest",
-  },
+    "truffle-flattener": "latest"
+  }
 }
