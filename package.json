@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/ProjectOpenSea/opensea-erc1155#readme",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.17",
     "multi-token-standard": "github:ProjectOpenSea/multi-token-standard",
     "openzeppelin-solidity": "^2.1.3",
+    "super-web3-provider": "0.0.21",
+    "superblocks-cli": "0.0.4",
     "truffle": "^5.1.27",
     "truffle-flattener": "latest",
-    "@truffle/hdwallet-provider": "^1.0.17",
-    "super-web3-provider": "0.0.21"
+    "superblocks-cli": "0.0.4"
   }
 }
