@@ -1,6 +1,6 @@
 version: 1
 jobs:
-  build:
+  compile:
     image: node:12
     script:
         - npm install
