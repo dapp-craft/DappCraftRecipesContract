@@ -28,14 +28,16 @@ contract SaleTokens is Ownable {
 
     /**
      * @dev Constructor of the contract.
-     * @param _wallet - Address of the recipient of the funds
+     * @param _walletStoredFunds - Address of the recipient of the funds
+     * @param _walletStoredNFT - Address stored NFTs
      * @param _erc1155Collection - Address of the collection
      * @param _tokenIds - List token ids for prices
      * @param _prices - prices in MANA
      * @param _rateMANAETH - rate of MANA in WEI (1e18 = 1eth)
      */
     constructor(
-        address payable _wallet,
+        address payable _walletStoredFunds,
+        address payable _walletStoredNFT,
         IERC1155 _erc1155Collection,
         uint256[] memory _tokenIds,
         uint256[] memory _prices,
@@ -43,8 +45,8 @@ contract SaleTokens is Ownable {
     )
     public {
         require(_tokenIds.length == _prices.length, "length for tokenIds and prices arrays must equals");
-        walletStoredFunds = _wallet;
-        walletStoredNFT = _wallet;
+        walletStoredFunds = _walletStoredFunds;
+        walletStoredNFT = _walletStoredNFT;
         erc1155Collection = _erc1155Collection;
         for (uint256 i = 0; i < _tokenIds.length; i++) {
             uint256 id = _tokenIds[i];

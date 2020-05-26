@@ -9,7 +9,7 @@ module.exports = function(deployer, network, accounts) {
     DappCraftRecipes.deployed()
     .then((res) => {
         console.log('setupOperator: ', ownerAddress, ' for SaleTokens ', SaleTokens_address);
-        return res.setApprovalForAll.sendTransaction(SaleTokens_address, true, {gas: 5000000, from: ownerAddress});
+        return res.setApprovalForAll.sendTransaction(SaleTokens_address, true, {from: ownerAddress});
     })
     .then((res) => {
         console.log('result: ', res);

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "truffle compile",
+    "deploy": "truffle migrate --network rinkeby --reset",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,13 +19,15 @@
   },
   "homepage": "https://github.com/ProjectOpenSea/opensea-erc1155#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "@truffle/hdwallet-provider": "^1.0.17",
     "multi-token-standard": "github:ProjectOpenSea/multi-token-standard",
     "openzeppelin-solidity": "^2.1.3",
     "super-web3-provider": "0.0.21",
     "superblocks-cli": "0.0.4",
+    "trezor-wallet-provider": "github:polyswarm/trezor-wallet-provider",
     "truffle": "^5.1.27",
-    "truffle-flattener": "latest",
-    "superblocks-cli": "0.0.4"
+    "truffle-hdwallet-provider": "latest",
+    "truffle-flattener": "latest"
   }
 }
