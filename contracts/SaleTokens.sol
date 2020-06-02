@@ -20,6 +20,8 @@ contract SaleTokens is Ownable {
 
     uint256 public referralPercent = 25;
 
+    address[] public referralList;
+
     event SoldNFT(
         address indexed _caller,
         uint256 indexed _tokenId,
@@ -69,18 +71,29 @@ contract SaleTokens is Ownable {
         uint256 currentBalance = erc1155Collection.balanceOf(walletStoredNFT, _nftId);
         require(_count <= currentBalance, "Not enough NFTs");
 
-        uint256 price = priceByTokenId[_nftId] * rateMANAETH;
-        require(msg.value == price * _count, "Received ETH value not correct");
+        uint256 price = SafeMath.mul(priceByTokenId[_nftId], rateMANAETH);
+        require(msg.value == SafeMath.mul(price, _count), "Received ETH value not correct");
 
         if (_referral == address(0)) {
             walletStoredFunds.transfer(msg.value);
         } else {
-            require(referralPercent < 50, "referral Percent not correct");
-            require(referralPercent >= 1, "referral Percent not correct");
-            uint256 referralFee = SafeMath.div(SafeMath.mul(msg.value, referralPercent), 100);
-            require(referralFee < msg.value, "referral Percent not correct");
-            _referral.transfer(referralFee);
-            walletStoredFunds.transfer(msg.value - referralFee);
+            bool referralRegistered = false;
+
+            for (uint256 i = 0; i < referralList.length; i++) {
+                if (_referral == referralList[i]) {
+                    referralRegistered = true;
+                    break;
+                }
+            }
+            if (referralRegistered) {
+                require(referralPercent < 50 || referralPercent >= 1, "referral Percent not correct");
+                uint256 referralFee = SafeMath.div(SafeMath.mul(msg.value, referralPercent), 100);
+                require(referralFee < msg.value, "referral Percent not correct");
+                _referral.transfer(referralFee);
+                walletStoredFunds.transfer(msg.value - referralFee);
+            } else {
+                walletStoredFunds.transfer(msg.value);
+            }
         }
 
         erc1155Collection.safeTransferFrom(walletStoredNFT, msg.sender, _nftId, _count, _data);
@@ -143,5 +156,13 @@ contract SaleTokens is Ownable {
         address payable _wallet
     ) public onlyOwner {
         walletStoredNFT = _wallet;
+    }
+
+    function addReferrals(
+        address[] memory _referralList
+    ) public onlyOwner {
+        for (uint256 i = 0; i < _referralList.length; i++) {
+            referralList.push(_referralList[i]);
+        }
     }
 }

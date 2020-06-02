@@ -10,7 +10,6 @@ contract DappCraftRecipes is ERC1155Tradable {
 
   // Must be sorted by rarity
   enum Rarity {
-//    Uncommon,
     Swanky,
     Legendary,
     Epic,
@@ -30,9 +29,10 @@ contract DappCraftRecipes is ERC1155Tradable {
     Goggles,
     Jacket,
     Trousers,
-    Boots
+    Boots,
+    Hair
   }
-  uint256 constant NUM_WEARABLE_TYPES = 5;
+  uint256 constant NUM_WEARABLE_TYPES = 6;
 
 
   constructor(address _proxyRegistryAddress) ERC1155Tradable(
@@ -41,7 +41,7 @@ contract DappCraftRecipes is ERC1155Tradable {
   ) public {
     _setBaseMetadataURI("https://dcl-dapp-craft.storage.googleapis.com/collection1/metadata/");
 
-    uint16[NUM_RARITIES] memory MaximumMintage = [5000, 1000, 100, 10];
+    uint16[NUM_RARITIES] memory MaximumMintage = [3000, 600, 60, 6];
     uint256[] memory ids = new uint256[](NUM_RARITIES*NUM_WEARABLE_TYPES);
     uint256[] memory quantities = new uint256[](NUM_RARITIES*NUM_WEARABLE_TYPES);
     for (uint256 i = 0; i < NUM_RARITIES; i++) {
