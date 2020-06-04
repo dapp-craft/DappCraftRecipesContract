@@ -13,11 +13,11 @@ module.exports = function(deployer, network, accounts) {
         // use multisig wallet
         walletStoredFundsAddress = "0xf49056577a9266cd6CFd1B8f6ac151D9BB3671d7";
     }
-    const rateMANAETH = 0.0001717;
+    const rateMANAETH = 0.0001721;
 
     deployer.deploy(SaleTokens, walletStoredFundsAddress, accounts[0], DappCraftRecipes_address,
         [64, 65, 66, 67, 68, 69, 3],
-        [1000,1000,1000,1000,1000,1500, 100],
+        [1000,1000,1000,1000,1000,1000, 100],
         rateMANAETH * 1e18,
         {from: ownerAddress})
     .catch(function(err) {

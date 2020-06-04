@@ -72,6 +72,7 @@ contract SaleTokens is Ownable {
         require(_count <= currentBalance, "Not enough NFTs");
 
         uint256 price = SafeMath.mul(priceByTokenId[_nftId], rateMANAETH);
+        require(price > 0, "Price not correct");
         require(msg.value == SafeMath.mul(price, _count), "Received ETH value not correct");
 
         if (_referral == address(0)) {
