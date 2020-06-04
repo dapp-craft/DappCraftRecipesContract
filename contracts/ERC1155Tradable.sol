@@ -95,7 +95,7 @@ contract ERC1155Tradable is ERC1155, ERC1155MintBurn, ERC1155Metadata, Ownable {
     uint256[] memory _ids,
     uint256[] memory _quantities,
     bytes memory _data
-  ) public {
+  ) public onlyOwner {
     for (uint256 i = 0; i < _ids.length; i++) {
       uint256 _id = _ids[i];
       uint256 quantity = _quantities[i];

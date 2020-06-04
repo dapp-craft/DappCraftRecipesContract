@@ -16,8 +16,8 @@ module.exports = function(deployer, network, accounts) {
     const rateMANAETH = 0.0001717;
 
     deployer.deploy(SaleTokens, walletStoredFundsAddress, accounts[0], DappCraftRecipes_address,
-        [64, 65, 66, 67, 68, 69],
-        [1000,1000,1000,1000,1000,1000],
+        [64, 65, 66, 67, 68, 69, 3],
+        [1000,1000,1000,1000,1000,1500, 100],
         rateMANAETH * 1e18,
         {from: ownerAddress})
     .catch(function(err) {

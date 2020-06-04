@@ -11,7 +11,10 @@ module.exports = function(deployer, network, accounts) {
     }
     console.log('Using account', ownerAddress);
 
-    deployer.deploy(DappCraftRecipes, proxyRegistryAddress, {from: ownerAddress})
+    deployer.deploy(DappCraftRecipes, proxyRegistryAddress,
+    [96, 97, 98, 99, 100, 64, 65, 66, 67, 68, 69,  32,  33,  34,  35,  36,   0,   1,   2,   3,   4],
+    [ 6,  6,  6,  6,   6, 20, 20, 20, 20, 20, 20, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600],
+    {from: ownerAddress})
     .catch(function(err) {
         console.log("ERROR! ", err.message);
     });
