@@ -1,10 +1,12 @@
-const HDWalletProvider = require('truffle-hdwallet-provider');
+//const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const MNEMONIC = process.env.MNEMONIC;
 const INFURA_KEY = process.env.INFURA_KEY;
 const FROM_ADDRESS = process.env.FROM_ADDRESS;
+const ETHERSAN_API_KEY = process.env.ETHERSAN_API_KEY;
 const GAS_PRICE = parseFloat(process.env.GAS_PRICE) * 1e9;
 const GAS = 5000000;
 
@@ -54,5 +56,12 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     }
-  }
+  },
+  api_keys: {
+      etherscan: ETHERSAN_API_KEY
+    },
+
+    plugins: [
+      'truffle-plugin-verify'
+    ]
 };
