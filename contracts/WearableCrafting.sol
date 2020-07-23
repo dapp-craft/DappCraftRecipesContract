@@ -37,11 +37,11 @@ contract WearableCrafting is IERC165, IERC1155TokenReceiver, Ownable {
         erc1155VouchersCollection = _vouchersCollection;
 
         wearableIds[64] = "moonminer_helmet";
-        wearableIds[65] = "moonminer_glasses_eyewear";
+        wearableIds[65] = "moonminer_goggles_eyewear";
         wearableIds[66] = "moonminer_jacket_upper_body";
         wearableIds[67] = "moonminer_pants_lower_body";
         wearableIds[68] = "moonminer_boots_feet";
-        wearableIds[69] = "moonminer_hairs";
+        wearableIds[69] = "moonminer_neurahairs_hair";
     }
 
     function mintWearables(address _beneficiary, uint256 _id, uint256 _amount) internal {
